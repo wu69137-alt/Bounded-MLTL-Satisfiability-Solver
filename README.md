@@ -77,17 +77,30 @@ The solver checks **satisfiability at time 0**:
 > Given a formula φ and trace length `N`, 
 > does there exist a trace of length `N` over the atomic propositions 
 > such that φ is true at **time 0**?
+Internally, the encoding produces a Boolean vector `bits_φ[0..N-1]` for each subformula φ.
+For the root formula, `root_bits[0]` corresponds to φ being true at time 0. The solver enforces:
 
-Internally, the encoding produces a Boolean vector `bits_φ[0..N-1]` for each subformula φ. 
-For the root formula, `root_bits[0]` corresponds to φ being true at time 0.
-The solver enforces:
+    root_bits[0] == True
 
-```text
-root_bits[0] == True
+---## 3. Installation
 
-##3. Installation
-     python -m venv venv
-     source venv/bin/activate
- 
-     Run the solver: 
-     python3 miltl_solver.py
+It is recommended to use a virtual environment.
+
+1. Create and activate a venv:
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate        # Windows: venv\Scripts\activate
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Run the solver:
+
+    ```bash
+    python miltl_solver.py
+    ```
